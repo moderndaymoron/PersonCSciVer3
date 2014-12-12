@@ -13,23 +13,25 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
     computer.cpp \
     computerservice.cpp \
     computerrepository.cpp \
     person.cpp \
     personservice.cpp \
     personrepository.cpp \
-    adddialog.cpp
+    adddialog.cpp \
+    mainwindow.cpp
 
-HEADERS  += mainwindow.h \
+HEADERS  += \
     computer.h \
     computerservice.h \
     computerrepository.h \
     person.h \
     personservice.h \
     personrepository.h \
-    adddialog.h
+    adddialog.h \
+    mainwindow.h
 
-FORMS    += mainwindow.ui \
-    adddialog.ui
+FORMS    += \
+    adddialog.ui \
+    mainwindow.ui

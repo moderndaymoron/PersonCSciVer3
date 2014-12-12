@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>422</width>
-    <height>365</height>
+    <width>466</width>
+    <height>421</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,52 +15,10 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
-<<<<<<< HEAD
-    <item row="2" column="0">
-=======
-    <item row="3" column="0">
->>>>>>> 7ff174fe66c456df7b106071b93c3586b1e502c7
-     <widget class="QPushButton" name="button_add">
-      <property name="enabled">
-       <bool>false</bool>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
-    </item>
-<<<<<<< HEAD
-    <item row="2" column="1">
-=======
-    <item row="3" column="1">
->>>>>>> 7ff174fe66c456df7b106071b93c3586b1e502c7
-     <widget class="QPushButton" name="button_delete">
-      <property name="enabled">
-       <bool>false</bool>
-      </property>
-      <property name="text">
-       <string>Delete</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="0">
-     <widget class="QComboBox" name="type_dropdown"/>
-    </item>
-    <item row="1" column="1">
-     <widget class="QComboBox" name="search_by_dropdown">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-<<<<<<< HEAD
     <item row="0" column="0">
      <widget class="QComboBox" name="type_dropdown"/>
     </item>
     <item row="0" column="2" colspan="2">
-=======
-    <item row="1" column="2" colspan="2">
->>>>>>> 7ff174fe66c456df7b106071b93c3586b1e502c7
      <widget class="QLineEdit" name="search_field">
       <property name="enabled">
        <bool>true</bool>
@@ -70,7 +28,33 @@
       </property>
      </widget>
     </item>
-<<<<<<< HEAD
+    <item row="0" column="1">
+     <widget class="QComboBox" name="search_by_dropdown">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QPushButton" name="button_delete">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string>Delete</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QPushButton" name="button_add">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string>Add</string>
+      </property>
+     </widget>
+    </item>
     <item row="1" column="0" colspan="4">
      <widget class="QTableWidget" name="DisplayTable">
       <property name="editTriggers">
@@ -81,25 +65,6 @@
       </property>
       <property name="showGrid">
        <bool>false</bool>
-      </property>
-      <property name="sortingEnabled">
-       <bool>false</bool>
-=======
-    <item row="2" column="0" colspan="4">
-     <widget class="QListWidget" name="display_list"/>
-    </item>
-    <item row="0" column="1">
-     <widget class="QLabel" name="search_by">
-      <property name="text">
-       <string>Search By</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="0">
-     <widget class="QLabel" name="display_what">
-      <property name="text">
-       <string>What to display</string>
->>>>>>> 7ff174fe66c456df7b106071b93c3586b1e502c7
       </property>
       <column>
        <property name="text">
@@ -130,7 +95,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>422</width>
+     <width>466</width>
      <height>21</height>
     </rect>
    </property>
