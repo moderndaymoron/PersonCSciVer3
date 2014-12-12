@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>422</width>
-    <height>365</height>
+    <width>466</width>
+    <height>421</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,13 +15,26 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="2" column="0">
-     <widget class="QPushButton" name="button_add">
+    <item row="1" column="0" colspan="4">
+     <widget class="QListWidget" name="display_list"/>
+    </item>
+    <item row="0" column="0">
+     <widget class="QComboBox" name="type_dropdown"/>
+    </item>
+    <item row="0" column="2" colspan="2">
+     <widget class="QLineEdit" name="search_field">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
-      <property name="text">
-       <string>Add</string>
+      <property name="placeholderText">
+       <string>search input here...</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QComboBox" name="search_by_dropdown">
+      <property name="enabled">
+       <bool>true</bool>
       </property>
      </widget>
     </item>
@@ -35,28 +48,15 @@
       </property>
      </widget>
     </item>
-    <item row="0" column="0">
-     <widget class="QComboBox" name="type_dropdown"/>
-    </item>
-    <item row="0" column="1">
-     <widget class="QComboBox" name="search_by_dropdown">
+    <item row="2" column="0">
+     <widget class="QPushButton" name="button_add">
       <property name="enabled">
-       <bool>true</bool>
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string>Add</string>
       </property>
      </widget>
-    </item>
-    <item row="0" column="2" colspan="2">
-     <widget class="QLineEdit" name="search_field">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
-      <property name="placeholderText">
-       <string>search input here...</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="0" colspan="4">
-     <widget class="QListWidget" name="display_list"/>
     </item>
    </layout>
   </widget>
@@ -65,7 +65,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>422</width>
+     <width>466</width>
      <height>21</height>
     </rect>
    </property>
