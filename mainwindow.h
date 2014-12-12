@@ -29,8 +29,6 @@ private slots:
 
     void on_button_delete_clicked();
 
-    void on_display_list_clicked(const QModelIndex &index);
-
 private:
     Ui::MainWindow *ui;
 

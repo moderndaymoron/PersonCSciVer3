@@ -24,27 +24,49 @@ void MainWindow::on_type_dropdown_activated()
         ui->search_by_dropdown->addItem("Gender");
         ui->search_by_dropdown->addItem("Date Of Birth");
         ui->search_by_dropdown->addItem("Date Of Death");
+
+        ui->DisplayTable->setHorizontalHeaderItem(0, new QTableWidgetItem("Name"));
+        ui->DisplayTable->setHorizontalHeaderItem(1, new QTableWidgetItem("Gender"));
+        ui->DisplayTable->setHorizontalHeaderItem(2, new QTableWidgetItem("Date Of Birth"));
+        ui->DisplayTable->setHorizontalHeaderItem(3, new QTableWidgetItem("Date of Death"));
+
     } else if(ui->type_dropdown->currentText() == "Computer") {
         ui->search_by_dropdown->addItem("Name");
         ui->search_by_dropdown->addItem("Build Year");
         ui->search_by_dropdown->addItem("Type");
         ui->search_by_dropdown->addItem("Built (boolean)");
+
+        ui->DisplayTable->setHorizontalHeaderItem(0, new QTableWidgetItem("Name"));
+        ui->DisplayTable->setHorizontalHeaderItem(1, new QTableWidgetItem("Build Year"));
+        ui->DisplayTable->setHorizontalHeaderItem(2, new QTableWidgetItem("Type"));
+        ui->DisplayTable->setHorizontalHeaderItem(3, new QTableWidgetItem("Built?"));
     }
     displayAll(false);
 }
 
 void MainWindow::displayAll(bool searching) {
-    ui->display_list->clear();
+    ui->DisplayTable->clearContents();
     qDebug() << "Calling display all";
+
     if(ui->type_dropdown->currentText() == "Person") {
         if(!currentPersons.size() && !searching) {
             currentPersons = pService.getSortedPersons("Name");
         }
         qDebug() << currentPersons.size();
+        ui->DisplayTable->setRowCount(currentPersons.size());
         for(unsigned int i = 0; i < currentPersons.size(); i++) {
             Person currentPerson = currentPersons[i];
-            string PersonStr = currentPerson.getName() + ", " + currentPerson.getGender() + ", " + currentPerson.getDayOfBirth() + ", " + currentPerson.getDayOfDeath() + ".";
-            ui->display_list->addItem(QString::fromStdString(PersonStr));
+
+            QString personName = QString::fromStdString(currentPerson.getName());
+            QString personGender = QString::fromStdString(currentPerson.getGender());
+            QString personDateOfBirth = QString::fromStdString(currentPerson.getDayOfBirth());
+            QString personDateOfDeath = QString::fromStdString(currentPerson.getDayOfDeath());
+
+            ui->DisplayTable->setItem(i, 0, new QTableWidgetItem(personName));
+            ui->DisplayTable->setItem(i, 1, new QTableWidgetItem(personGender));
+            ui->DisplayTable->setItem(i, 2, new QTableWidgetItem(personDateOfBirth));
+            ui->DisplayTable->setItem(i, 3, new QTableWidgetItem(personDateOfDeath));
+
         }
 
     } else if(ui->type_dropdown->currentText() == "Computer") {
@@ -52,15 +74,19 @@ void MainWindow::displayAll(bool searching) {
             currentComputers = cService.getSortedComputers("Name");
         }
         qDebug() << currentComputers.size();
+        ui->DisplayTable->setRowCount(currentComputers.size());
         for(unsigned int i = 0; i < currentComputers.size(); i++) {
             Computer currentComputer = currentComputers[i];
-            string ComputerStr = currentComputer.getName() + ", " + currentComputer.getBuildYear() + ", " + currentComputer.getType() + ", ";
-            if(currentComputer.getBuilt()) {
-                ComputerStr += "true.";
-            } else {
-                ComputerStr += "false.";
-            }
-            ui->display_list->addItem(QString::fromStdString(ComputerStr));
+
+            QString computerName = QString::fromStdString(currentComputer.getName());
+            QString computerBuildYear = QString::fromStdString(currentComputer.getBuildYear());
+            QString computerType = QString::fromStdString(currentComputer.getType());
+            QString computerBuilt = QString::number(currentComputer.getBuilt());
+
+            ui->DisplayTable->setItem(i, 0, new QTableWidgetItem(computerName));
+            ui->DisplayTable->setItem(i, 1, new QTableWidgetItem(computerBuildYear));
+            ui->DisplayTable->setItem(i, 2, new QTableWidgetItem(computerType));
+            ui->DisplayTable->setItem(i, 3, new QTableWidgetItem(computerBuilt));
         }
 
     } else {
@@ -100,9 +126,4 @@ void MainWindow::on_button_delete_clicked()
     } else {
 
     }
-}
-
-void MainWindow::on_display_list_clicked(const QModelIndex &index)
-{
-    ui->button_delete->setEnabled(true);
 }
