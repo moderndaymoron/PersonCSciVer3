@@ -6,6 +6,7 @@
 #include "computer.h"
 #include <string>
 #include "personservice.h"
+#include "computerservice.h"
 
 namespace Ui {
 class AddDialog;
@@ -26,6 +27,7 @@ private slots:
 private:
     Ui::AddDialog *ui;
     PersonService pService;
+    ComputerService cService;
 };
 
 #endif // ADDDIALOG_H

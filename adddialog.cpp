@@ -31,6 +31,7 @@ AddDialog::~AddDialog()
 }
 
 void AddDialog::on_ok_button_clicked() {
+    if(ui->second_input_label->text() == "Gender (Male/Female):") {
         Person temp;
         temp.setName(ui->name_input->text().toStdString());
         temp.setGender(ui->second_input->text().toStdString());
@@ -42,5 +43,18 @@ void AddDialog::on_ok_button_clicked() {
         } else {
             ui->ErrorLabel->setText("<b><span style='color:#FF0000'>ERROR: Invalid Person Entered!</b>");
         }
+    } else {
+        Computer temp;
+        temp.setName(ui->name_input->text().toStdString());
+        temp.setBuildYear(ui->second_input->text().toStdString());
+        temp.setType(ui->third_input->text().toStdString());
+        temp.setBuilt(ui->fourth_input->text().toInt());
+        if(temp.isValidComputer()) {
+            cService.add(temp);
+            AddDialog::close();
+        } else {
+            ui->ErrorLabel->setText("<b><span style='color:#FF0000'>ERROR: Invalid Computer Entered!</b>");
+        }
+    }
 }
 
