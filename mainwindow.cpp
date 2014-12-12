@@ -17,6 +17,7 @@ MainWindow::~MainWindow() {
 
 void MainWindow::on_type_dropdown_activated()
 {
+    ui->button_add->setEnabled(true);
     ui->search_by_dropdown->clear();
     if(ui->type_dropdown->currentText() == "Person") {
         ui->search_by_dropdown->addItem("Name");
@@ -42,7 +43,8 @@ void MainWindow::displayAll(bool searching) {
         qDebug() << currentPersons.size();
         for(unsigned int i = 0; i < currentPersons.size(); i++) {
             Person currentPerson = currentPersons[i];
-            ui->display_list->addItem(QString::fromStdString(currentPerson.getName()));
+            string PersonStr = currentPerson.getName() + ", " + currentPerson.getGender() + ", " + currentPerson.getDayOfBirth() + ", " + currentPerson.getDayOfDeath() + ".";
+            ui->display_list->addItem(QString::fromStdString(PersonStr));
         }
 
     } else if(ui->type_dropdown->currentText() == "Computer") {
@@ -52,9 +54,17 @@ void MainWindow::displayAll(bool searching) {
         qDebug() << currentComputers.size();
         for(unsigned int i = 0; i < currentComputers.size(); i++) {
             Computer currentComputer = currentComputers[i];
-            ui->display_list->addItem(QString::fromStdString(currentComputer.getName()));
+            string ComputerStr = currentComputer.getName() + ", " + currentComputer.getBuildYear() + ", " + currentComputer.getType() + ", ";
+            if(currentComputer.getBuilt()) {
+                ComputerStr += "true.";
+            } else {
+                ComputerStr += "false.";
+            }
+            ui->display_list->addItem(QString::fromStdString(ComputerStr));
         }
 
+    } else {
+        //TODO: get and display connections
     }
 
 }
@@ -71,5 +81,28 @@ void MainWindow::on_search_field_textChanged() {
     } else if(ui->type_dropdown->currentText() == "Computer") {
         currentComputers = cService.search(searchInput, searchType);
         displayAll(searching);
+    } else {
+        //TODO: Search connections
     }
+}
+
+void MainWindow::on_button_add_clicked() {
+    addDialog = new AddDialog(this, ui->type_dropdown->currentText());
+    addDialog->show();
+}
+
+void MainWindow::on_button_delete_clicked()
+{
+    if(ui->type_dropdown->currentText() == "Person") {
+
+    } else if(ui->type_dropdown->currentText() == "Computer") {
+
+    } else {
+
+    }
+}
+
+void MainWindow::on_display_list_clicked(const QModelIndex &index)
+{
+    ui->button_delete->setEnabled(true);
 }

@@ -6,6 +6,7 @@
 #include "computer.h"
 #include "personservice.h"
 #include "computerservice.h"
+#include "adddialog.h"
 
 namespace Ui {
 class MainWindow;
@@ -24,11 +25,19 @@ private slots:
 
     void on_search_field_textChanged();
 
+    void on_button_add_clicked();
+
+    void on_button_delete_clicked();
+
+    void on_display_list_clicked(const QModelIndex &index);
+
 private:
     Ui::MainWindow *ui;
 
     void display();
     void displayAll(bool searching);
+
+    AddDialog *addDialog;
 
     std::vector<Person> currentPersons;
     std::vector<Computer> currentComputers;
