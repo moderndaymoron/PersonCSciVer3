@@ -5,11 +5,9 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow) {
     ui->setupUi(this);
-<<<<<<< HEAD
     ui->display_tab->setCurrentIndex(0);
     display();
     on_comboBox_sort_by_person_activated();
-=======
    // ui->display_tab->setCurrentIndex(0);
     on_comboBox_sort_by_person_activated();
     displayPersons();
@@ -18,7 +16,6 @@ MainWindow::MainWindow(QWidget *parent) :
     //ui->type_dropdown->addItem("Person");
     //ui->type_dropdown->addItem("Computer");
     //ui->type_dropdown->addItem("Connection");
->>>>>>> 80cb54641e5c109108bb3eddd8c88ea30eb35f8a
 }
 
 MainWindow::~MainWindow() {
