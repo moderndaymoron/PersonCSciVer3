@@ -22,7 +22,8 @@ SOURCES += main.cpp\
     personrepository.cpp \
     adddialog.cpp \
     mainwindow.cpp \
-    formconnectiondialog.cpp
+    formconnectiondialog.cpp \
+    aboutdialog.cpp
 
 HEADERS  += \
     computer.h \
@@ -33,12 +34,14 @@ HEADERS  += \
     personrepository.h \
     adddialog.h \
     mainwindow.h \
-    formconnectiondialog.h
+    formconnectiondialog.h \
+    aboutdialog.h
 
 FORMS    += \
     adddialog.ui \
     mainwindow.ui \
-    formconnectiondialog.ui
+    formconnectiondialog.ui \
+    aboutdialog.ui
 
 RESOURCES += \
     logos.qrc

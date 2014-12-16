@@ -10,6 +10,7 @@
 #include "computerservice.h"
 #include "adddialog.h"
 #include "formconnectiondialog.h"
+#include "aboutdialog.h"
 
 namespace Ui {
 class MainWindow;
@@ -46,6 +47,7 @@ private slots:
 
     void on_actionForm_Connection_triggered();
 
+    void on_actionAbout_triggered();
 private:
     Ui::MainWindow *ui;
 
@@ -56,6 +58,7 @@ private:
     void displayConnections();
 
     AddDialog *addDialog;
+    AboutDialog *aboutDialog;
     FormConnectionDialog *formConnectionDialog;
 
     std::vector<Person> currentPersons;

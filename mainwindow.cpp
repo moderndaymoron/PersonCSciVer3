@@ -269,6 +269,11 @@ void MainWindow::on_actionAdd_Person_triggered() {
     addDialog->show();
 }
 
+void MainWindow::on_actionAbout_triggered() {
+    aboutDialog = new AboutDialog(this);
+    aboutDialog->show();
+}
+
 void MainWindow::on_actionForm_Connection_triggered() {
     formConnectionDialog = new FormConnectionDialog(this);
     formConnectionDialog->show();
