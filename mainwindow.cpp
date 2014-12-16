@@ -42,6 +42,8 @@ void MainWindow::setDisplay() {
 
     ui->DisplayTable_Connections->setHorizontalHeaderItem(0, new QTableWidgetItem("Scientist"));
     ui->DisplayTable_Connections->setHorizontalHeaderItem(1, new QTableWidgetItem("Computers"));
+    ui->DisplayTable_Connections->setColumnWidth(0,150);
+    ui->DisplayTable_Connections->setColumnWidth(1,250);
 
     displayAll(false);
 }
