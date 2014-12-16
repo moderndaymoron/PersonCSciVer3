@@ -216,10 +216,13 @@ void MainWindow::on_display_tab_tabBarClicked(int index)
 {
     if(index == 0) {
         on_comboBox_sort_by_person_activated();
+        ui->button_delete->setEnabled(false);
     } else if(index == 1) {
         on_comboBox_sort_by_computer_activated();
+        ui->button_delete->setEnabled(false);
     } else if(index == 2) {
         displayConnections();
+        ui->button_delete->setEnabled(false);
     }
 }
 
