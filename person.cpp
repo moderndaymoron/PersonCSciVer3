@@ -40,6 +40,22 @@ void Person::setDayOfDeath(string s) {
     dayOfDeath = s;
 }
 
+string Person::getWikilink() {
+    return wikilink;
+}
+
+void Person::setWikilink(string s) {
+    wikilink = s;
+}
+
+string Person::getImagePath() {
+    return imagePath;
+}
+
+void Person::setImage(string s) {
+    imagePath = s;
+}
+
 int Person::getID() {
     return ID;
 }

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>276</width>
-    <height>217</height>
+    <width>314</width>
+    <height>264</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -71,6 +71,33 @@
     </layout>
    </item>
    <item>
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Wikipedia: </string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLineEdit" name="wiki_link"/>
+   </item>
+   <item>
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Image:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="browse_Button">
+     <property name="text">
+      <string>Browse...</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLineEdit" name="image_path"/>
+   </item>
+   <item>
     <layout class="QHBoxLayout" name="horizontalLayout_5">
      <item>
       <widget class="QLabel" name="ErrorLabel">
@@ -106,12 +133,12 @@
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>227</x>
-     <y>196</y>
+     <x>802</x>
+     <y>438</y>
     </hint>
     <hint type="destinationlabel">
-     <x>234</x>
-     <y>210</y>
+     <x>771</x>
+     <y>447</y>
     </hint>
    </hints>
   </connection>
