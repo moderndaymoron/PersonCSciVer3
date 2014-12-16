@@ -205,3 +205,12 @@ void MainWindow::displayComputers() {
     }
 
 }
+
+void MainWindow::on_display_tab_tabBarClicked(int index)
+{
+    if(index == 0) {
+        on_comboBox_sort_by_person_activated();
+    } else if(index == 1) {
+        on_comboBox_sort_by_computer_activated();
+    }
+}

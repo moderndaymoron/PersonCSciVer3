@@ -40,6 +40,8 @@ private slots:
 
     void on_comboBox_sort_by_computer_activated();
 
+    void on_display_tab_tabBarClicked(int index);
+
 private:
     Ui::MainWindow *ui;
 
