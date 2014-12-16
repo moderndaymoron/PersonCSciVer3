@@ -22,7 +22,6 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-    void on_display_tab_tabBarClicked();
 private slots:
     void on_search_field_textChanged();
 
@@ -41,10 +40,11 @@ private slots:
 private:
     Ui::MainWindow *ui;
 
-    void display();
+    void setDisplay();
     void displayAll(bool searching);
     void displayComputers();
     void displayPersons();
+    void displayConnections();
 
     AddDialog *addDialog;
 

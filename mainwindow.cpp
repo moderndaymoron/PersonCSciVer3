@@ -6,41 +6,43 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow) {
     ui->setupUi(this);
     ui->display_tab->setCurrentIndex(0);
-    display();
+    setDisplay();
+    displayConnections();
     on_comboBox_sort_by_person_activated();
-    displayPersons();
-    displayComputers();
 }
 
 MainWindow::~MainWindow() {
     delete ui;
 }
 
-void MainWindow::display()
+void MainWindow::setDisplay()
 {
     ui->button_add->setEnabled(true);
     ui->search_by_dropdown->clear();
     ui->search_by_dropdown_2->clear();
 
-        ui->search_by_dropdown->addItem("Name");
-        ui->search_by_dropdown->addItem("Gender");
-        ui->search_by_dropdown->addItem("Date Of Birth");
-        ui->search_by_dropdown->addItem("Date Of Death");
+    ui->search_by_dropdown->addItem("Name");
+    ui->search_by_dropdown->addItem("Gender");
+    ui->search_by_dropdown->addItem("Date Of Birth");
+    ui->search_by_dropdown->addItem("Date Of Death");
 
-        ui->DisplayTable->setHorizontalHeaderItem(0, new QTableWidgetItem("Name"));
-        ui->DisplayTable->setHorizontalHeaderItem(1, new QTableWidgetItem("Gender"));
-        ui->DisplayTable->setHorizontalHeaderItem(2, new QTableWidgetItem("Date Of Birth"));
-        ui->DisplayTable->setHorizontalHeaderItem(3, new QTableWidgetItem("Date Of Death"));
+    ui->DisplayTable->setHorizontalHeaderItem(0, new QTableWidgetItem("Name"));
+    ui->DisplayTable->setHorizontalHeaderItem(1, new QTableWidgetItem("Gender"));
+    ui->DisplayTable->setHorizontalHeaderItem(2, new QTableWidgetItem("Date Of Birth"));
+    ui->DisplayTable->setHorizontalHeaderItem(3, new QTableWidgetItem("Date Of Death"));
 
-        ui->search_by_dropdown_2->addItem("Name");
-        ui->search_by_dropdown_2->addItem("Build Year");
-        ui->search_by_dropdown_2->addItem("Type");
-        ui->search_by_dropdown_2->addItem("Built (boolean)");
+    ui->search_by_dropdown_2->addItem("Name");
+    ui->search_by_dropdown_2->addItem("Build Year");
+    ui->search_by_dropdown_2->addItem("Type");
+    ui->search_by_dropdown_2->addItem("Built (boolean)");
 
-        ui->DisplayTable_2->setHorizontalHeaderItem(0, new QTableWidgetItem("Name"));
-        ui->DisplayTable_2->setHorizontalHeaderItem(1, new QTableWidgetItem("Build Year"));
-        ui->DisplayTable_2->setHorizontalHeaderItem(2, new QTableWidgetItem("Type"));
-        ui->DisplayTable_2->setHorizontalHeaderItem(3, new QTableWidgetItem("Built?"));
+    ui->DisplayTable_2->setHorizontalHeaderItem(0, new QTableWidgetItem("Name"));
+    ui->DisplayTable_2->setHorizontalHeaderItem(1, new QTableWidgetItem("Build Year"));
+    ui->DisplayTable_2->setHorizontalHeaderItem(2, new QTableWidgetItem("Type"));
+    ui->DisplayTable_2->setHorizontalHeaderItem(3, new QTableWidgetItem("Built?"));
+
+    ui->DisplayTable_Connections->setHorizontalHeaderItem(0, new QTableWidgetItem("Scientist"));
+    ui->DisplayTable_Connections->setHorizontalHeaderItem(1, new QTableWidgetItem("Computers"));
 
     displayAll(false);
 }
@@ -108,7 +110,7 @@ void MainWindow::on_search_field_textChanged() {
 void MainWindow::on_button_add_clicked() {
 
     if(ui->display_tab->currentIndex() == 0) {
-    addDialog = new AddDialog(this, ui->display_tab->tabText(0));
+        addDialog = new AddDialog(this, ui->display_tab->tabText(0));
     }else if(ui->display_tab->currentIndex() == 1) {
         addDialog = new AddDialog(this, ui->display_tab->tabText(1));
     }
@@ -201,5 +203,43 @@ void MainWindow::on_display_tab_tabBarClicked(int index)
         on_comboBox_sort_by_person_activated();
     } else if(index == 1) {
         on_comboBox_sort_by_computer_activated();
+    } else if(index == 2) {
+        displayConnections();
+    }
+}
+
+void MainWindow::displayConnections() {
+    ui->DisplayTable_Connections->clearContents();
+    vector<Person> sortedScientists = pService.getSortedPersons("Name");
+    vector<QString> connectedScientistNames;
+    vector<QString> connectedComputersToScientist;
+    int rowCounter = 0;
+    for(int i = 0; i < sortedScientists.size(); i++) {
+        vector<Computer> connectedComputers = cService.getComputersFromScientist(sortedScientists[i]);
+        qDebug() << "";
+        string comp;
+        if(connectedComputers.size()) {
+            for(int j = 0; j < connectedComputers.size(); j++) {
+                if(j != connectedComputers.size() - 1) {
+                    comp += connectedComputers[j].getName() + ", ";
+                } else {
+                    comp += connectedComputers[j].getName() + ".";
+                }
+            }
+            rowCounter++;
+            connectedScientistNames.push_back(QString::fromStdString(sortedScientists[i].getName()));
+            connectedComputersToScientist.push_back(QString::fromStdString(comp));
+
+            qDebug() << QString::fromStdString(comp);
+
+        } else {
+            qDebug() << "No connection in database.";
+        }
+
+    }
+    ui->DisplayTable_Connections->setRowCount(rowCounter);
+    for(int i = 0; i < rowCounter; i++) {
+        ui->DisplayTable_Connections->setItem(i, 0, new QTableWidgetItem(connectedScientistNames[i]));
+        ui->DisplayTable_Connections->setItem(i, 1, new QTableWidgetItem(connectedComputersToScientist[i]));
     }
 }

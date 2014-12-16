@@ -7,19 +7,19 @@ AddDialog::AddDialog(QWidget *parent, QString AddType) :
 {
     ui->setupUi(this);
     ui->ErrorLabel->setText("");
-    if(AddType == "Computer") {
+    if(AddType == "Computers") {
         ui->Name_label->setText("Name:");
         ui->second_input_label->setText("Build Year (YYYY):");
         ui->third_input_label->setText("Type:");
         ui->fourth_input_label->setText("Built(0/1)?");
 
-    } else if (AddType == "Person") {
+    } else if (AddType == "Persons") {
         ui->Name_label->setText("Name:");
         ui->second_input_label->setText("Gender (Male/Female):");
         ui->third_input_label->setText("Date of Birth (YYYY/MM/DD):");
         ui->fourth_input_label->setText("Date of Death (YYYY/MM/DD):");
 
-    } else if (AddType == "Connection") {
+    } else if (AddType == "Connections") {
         //TODO: display add screen for connection
     }
 }
