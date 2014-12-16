@@ -5,14 +5,9 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow) {
     ui->setupUi(this);
-   // ui->display_tab->setCurrentIndex(0);
+    ui->display_tab->setCurrentIndex(0);
     display();
     on_comboBox_sort_by_person_activated();
-
-
-    //ui->type_dropdown->addItem("Person");
-    //ui->type_dropdown->addItem("Computer");
-    //ui->type_dropdown->addItem("Connection");
 }
 
 MainWindow::~MainWindow() {
@@ -54,8 +49,8 @@ void MainWindow::displayAll(bool searching) {
     qDebug() << "Calling display all";
     if(ui->display_tab->currentIndex() == 0) {
         if(!currentPersons.size() && !searching) {
-            //currentPersons = pService.getSortedPersons("Name");
-            on_comboBox_sort_by_person_activated();
+            currentPersons = pService.getSortedPersons("Name");
+            //on_comboBox_sort_by_person_activated();
             qDebug() << "!CP.size && !searching";
         }
         qDebug() << "getting persons size" << currentPersons.size();
@@ -173,14 +168,13 @@ void MainWindow::on_comboBox_sort_by_computer_activated()
     if(ui->comboBox_sort_by_computer->currentText() == "Name") {
         currentComputers = cService.getSortedComputers("Name");
         displayComputers();
-
     } else if(ui->comboBox_sort_by_computer->currentText() == "Build Year") {
         currentComputers = cService.getSortedComputers("Build Year");
         displayComputers();
     } else if(ui->comboBox_sort_by_computer->currentText() == "Type"){
         currentComputers = cService.getSortedComputers("Type");
         displayComputers();
-    } else if(ui->comboBox_sort_by_computer->currentText() == "Build Year") {
+    } else if(ui->comboBox_sort_by_computer->currentText() == "Built?") {
         currentComputers = cService.getSortedComputers("Built");
         displayComputers();
     }
