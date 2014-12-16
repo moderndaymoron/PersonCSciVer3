@@ -38,6 +38,12 @@ private slots:
 
     void on_display_tab_tabBarClicked(int index);
 
+    void on_actionAdd_computer_triggered();
+
+    void on_actionAdd_Person_triggered();
+
+    void on_actionForm_Connection_triggered();
+
 private:
     Ui::MainWindow *ui;
 

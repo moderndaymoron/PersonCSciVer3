@@ -62,7 +62,7 @@
        <enum>QTabWidget::North</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>2</number>
       </property>
       <property name="iconSize">
        <size>
@@ -436,6 +436,17 @@
      <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="separator"/>
+    <addaction name="actionAdd_Person"/>
+    <addaction name="actionAdd_computer"/>
+    <addaction name="actionForm_Connection"/>
+    <addaction name="actionAbout"/>
+   </widget>
+   <addaction name="menuFile"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -446,6 +457,26 @@
    </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionAdd_computer">
+   <property name="text">
+    <string>Add computer</string>
+   </property>
+  </action>
+  <action name="actionAdd_Person">
+   <property name="text">
+    <string>Add Person</string>
+   </property>
+  </action>
+  <action name="actionForm_Connection">
+   <property name="text">
+    <string>Form Connection</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>

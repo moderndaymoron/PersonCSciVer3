@@ -249,3 +249,18 @@ void MainWindow::displayConnections() {
         ui->DisplayTable_Connections->setItem(i, 1, new QTableWidgetItem(connectedComputersToScientist[i]));
     }
 }
+
+void MainWindow::on_actionAdd_computer_triggered() {
+    addDialog = new AddDialog(this, ui->display_tab->tabText(1));
+    addDialog->show();
+}
+
+void MainWindow::on_actionAdd_Person_triggered() {
+    addDialog = new AddDialog(this, ui->display_tab->tabText(0));
+    addDialog->show();
+}
+
+void MainWindow::on_actionForm_Connection_triggered() {
+    formConnectionDialog = new FormConnectionDialog(this);
+    formConnectionDialog->show();
+}
