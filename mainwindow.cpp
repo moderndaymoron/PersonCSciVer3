@@ -112,10 +112,15 @@ void MainWindow::on_button_add_clicked() {
 
     if(ui->display_tab->currentIndex() == 0) {
         addDialog = new AddDialog(this, ui->display_tab->tabText(0));
-    }else if(ui->display_tab->currentIndex() == 1) {
+        addDialog->show();
+    } else if(ui->display_tab->currentIndex() == 1) {
         addDialog = new AddDialog(this, ui->display_tab->tabText(1));
+        addDialog->show();
+    } else if(ui->display_tab->currentIndex() == 2) {
+        formConnectionDialog = new FormConnectionDialog(this);
+        formConnectionDialog->show();
     }
-    addDialog->show();
+
 }
 
 /*void MainWindow::on_button_delete_clicked()

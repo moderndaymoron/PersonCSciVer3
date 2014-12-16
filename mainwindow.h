@@ -9,6 +9,7 @@
 #include "personservice.h"
 #include "computerservice.h"
 #include "adddialog.h"
+#include "formconnectiondialog.h"
 
 namespace Ui {
 class MainWindow;
@@ -47,6 +48,7 @@ private:
     void displayConnections();
 
     AddDialog *addDialog;
+    FormConnectionDialog *formConnectionDialog;
 
     std::vector<Person> currentPersons;
     std::vector<Computer> currentComputers;
