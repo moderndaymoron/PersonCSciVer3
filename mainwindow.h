@@ -11,6 +11,7 @@
 #include "adddialog.h"
 #include "formconnectiondialog.h"
 #include "aboutdialog.h"
+#include "specificviewdialog.h"
 
 namespace Ui {
 class MainWindow;
@@ -49,6 +50,10 @@ private slots:
 
     void on_actionAbout_triggered();
     void on_DisplayTable_clicked(const QModelIndex &index);
+    void on_DisplayTable_2_doubleClicked(const QModelIndex &index);
+
+    void on_DisplayTable_doubleClicked(const QModelIndex &index);
+
 private:
     Ui::MainWindow *ui;
 
@@ -61,6 +66,7 @@ private:
     AddDialog *addDialog;
     AboutDialog *aboutDialog;
     FormConnectionDialog *formConnectionDialog;
+    SpecificViewDialog *specificViewDialog;
 
     std::vector<Person> currentPersons;
     std::vector<Computer> currentComputers;

@@ -120,7 +120,6 @@ void MainWindow::on_button_add_clicked() {
         formConnectionDialog = new FormConnectionDialog(this);
         formConnectionDialog->show();
     }
-
 }
 
 void MainWindow::on_button_delete_clicked() {
@@ -286,4 +285,14 @@ void MainWindow::on_actionAbout_triggered() {
 void MainWindow::on_actionForm_Connection_triggered() {
     formConnectionDialog = new FormConnectionDialog(this);
     formConnectionDialog->show();
+}
+
+void MainWindow::on_DisplayTable_2_doubleClicked(const QModelIndex &index){
+    specificViewDialog = new SpecificViewDialog(this);
+    specificViewDialog->show();
+}
+
+void MainWindow::on_DisplayTable_doubleClicked(const QModelIndex &index) {
+    specificViewDialog = new SpecificViewDialog(this);
+    specificViewDialog->show();
 }
