@@ -47,6 +47,15 @@
     </item>
     <item row="0" column="0" colspan="2">
      <widget class="QTabWidget" name="display_tab">
+      <property name="font">
+       <font>
+        <family>HelveticaNeueLT Pro 55 Roman</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <italic>true</italic>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="toolTip">
        <string/>
       </property>
@@ -344,6 +353,15 @@
          </layout>
         </item>
        </layout>
+      </widget>
+      <widget class="QWidget" name="connection_tab">
+       <attribute name="icon">
+        <iconset resource="logos.qrc">
+         <normaloff>:/logo/Connections.png</normaloff>:/logo/Connections.png</iconset>
+       </attribute>
+       <attribute name="title">
+        <string>Connections</string>
+       </attribute>
       </widget>
      </widget>
     </item>
