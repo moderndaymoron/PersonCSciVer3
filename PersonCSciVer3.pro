@@ -36,3 +36,6 @@ HEADERS  += \
 FORMS    += \
     adddialog.ui \
     mainwindow.ui
+
+RESOURCES += \
+    logos.qrc

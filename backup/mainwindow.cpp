@@ -5,11 +5,14 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow) {
     ui->setupUi(this);
-    ui->display_tab->setCurrentIndex(0);
-    display();
+   // ui->display_tab->setCurrentIndex(0);
     on_comboBox_sort_by_person_activated();
     displayPersons();
     displayComputers();
+
+    //ui->type_dropdown->addItem("Person");
+    //ui->type_dropdown->addItem("Computer");
+    //ui->type_dropdown->addItem("Connection");
 }
 
 MainWindow::~MainWindow() {
@@ -51,10 +54,12 @@ void MainWindow::displayAll(bool searching) {
     if(ui->display_tab->currentIndex() == 0) {
         ui->DisplayTable->clearContents();
         if(!currentPersons.size() && !searching) {
-            currentPersons = pService.getSortedPersons("Name");
+            //currentPersons = pService.getSortedPersons("Name");
+            on_comboBox_sort_by_person_activated();
             qDebug() << "!CP.size && !searching";
         }
         qDebug() << "getting persons size" << currentPersons.size();
+        //on_comboBox_sort_by_person_activated();
         displayPersons();
 
     } else if(ui->display_tab->currentIndex() == 1) {
@@ -64,7 +69,13 @@ void MainWindow::displayAll(bool searching) {
             qDebug() << "!CC.size && !searching";
         }
         qDebug() << "getting computer size" <<currentComputers.size();
+        //on_comboBox_sort_by_computer_activated();
         displayComputers();
+
+        /*ui->DisplayTable_2->setHorizontalHeaderItem(0, new QTableWidgetItem("Name"));
+        ui->DisplayTable_2->setHorizontalHeaderItem(1, new QTableWidgetItem("Build Year"));
+        ui->DisplayTable_2->setHorizontalHeaderItem(2, new QTableWidgetItem("Type"));
+        ui->DisplayTable_2->setHorizontalHeaderItem(3, new QTableWidgetItem("Built?"));*/
     } else {
         //TODO: get and display connections
     }
@@ -95,7 +106,7 @@ void MainWindow::on_search_field_textChanged() {
     string searchType = ui->search_by_dropdown->currentText().toStdString();
 
     bool searching = true;
-
+    qDebug() << ui->display_tab->currentIndex();
     if(ui->display_tab->currentIndex() == 0) {
         currentPersons = pService.search(searchInput, searchType);
         displayAll(searching);
@@ -118,11 +129,8 @@ void MainWindow::on_button_add_clicked() {
 /*void MainWindow::on_button_delete_clicked()
 {
     if(ui-> display_tab->tabText() == "Person") {
-
     } else if(ui->display_tab->tabText() == "Computer") {
-
     } else {
-
     }
 }
 */
@@ -164,18 +172,18 @@ void MainWindow::on_comboBox_sort_by_computer_activated()
     if(ui->comboBox_sort_by_computer->currentText() == "Name") {
         currentComputers = cService.getSortedComputers("Name");
         displayComputers();
+
     } else if(ui->comboBox_sort_by_computer->currentText() == "Build Year") {
         currentComputers = cService.getSortedComputers("Build Year");
         displayComputers();
     } else if(ui->comboBox_sort_by_computer->currentText() == "Type"){
         currentComputers = cService.getSortedComputers("Type");
         displayComputers();
-    } else if(ui->comboBox_sort_by_computer->currentText() == "Built?") {
+    } else if(ui->comboBox_sort_by_computer->currentText() == "Build Year") {
         currentComputers = cService.getSortedComputers("Built");
         displayComputers();
     }
 }
-
 void MainWindow::displayComputers() {
 
     ui->DisplayTable_2->setRowCount(currentComputers.size());

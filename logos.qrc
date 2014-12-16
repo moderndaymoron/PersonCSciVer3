@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/logo">
+        <file>mad_scientist.jpeg</file>
+        <file>computer.jpeg</file>
+        <file>connections.jpeg</file>
+        <file>database.jpeg</file>
+        <file>scientist.jpeg</file>
+    </qresource>
+</RCC>
