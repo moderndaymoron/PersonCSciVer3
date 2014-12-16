@@ -47,6 +47,15 @@
     </item>
     <item row="0" column="0" colspan="2">
      <widget class="QTabWidget" name="display_tab">
+      <property name="font">
+       <font>
+        <family>HelveticaNeueLT Pro 55 Roman</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <italic>true</italic>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="toolTip">
        <string/>
       </property>
@@ -397,14 +406,22 @@
         </item>
        </layout>
       </widget>
+<<<<<<< HEAD
       <widget class="QWidget" name="tab">
        <attribute name="icon">
         <iconset resource="logos.qrc">
          <normaloff>:/logo/connections.jpeg</normaloff>:/logo/connections.jpeg</iconset>
+=======
+      <widget class="QWidget" name="connection_tab">
+       <attribute name="icon">
+        <iconset resource="logos.qrc">
+         <normaloff>:/logo/Connections.png</normaloff>:/logo/Connections.png</iconset>
+>>>>>>> a400641ea3b41921a120cc888ecc88f097b9684f
        </attribute>
        <attribute name="title">
         <string>Connections</string>
        </attribute>
+<<<<<<< HEAD
        <layout class="QGridLayout" name="gridLayout_6">
         <item row="0" column="0">
          <widget class="QTableWidget" name="DisplayTable_Connections">
@@ -421,6 +438,8 @@
          </widget>
         </item>
        </layout>
+=======
+>>>>>>> a400641ea3b41921a120cc888ecc88f097b9684f
       </widget>
      </widget>
     </item>
