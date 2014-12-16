@@ -6,6 +6,8 @@ Person::Person() {
     gender = "";
     dayOfBirth = "";
     dayOfDeath = "";
+    wikilink = "";
+    imagePath = "";
 }
 
 string Person::getName() {
@@ -38,6 +40,22 @@ string Person::getDayOfDeath() {
 
 void Person::setDayOfDeath(string s) {
     dayOfDeath = s;
+}
+
+string Person::getWikilink() {
+    return wikilink;
+}
+
+void Person::setWikilink(string s) {
+    wikilink = s;
+}
+
+string Person::getImagePath() {
+    return imagePath;
+}
+
+void Person::setImagePath(string s) {
+    imagePath = s;
 }
 
 int Person::getID() {

@@ -17,6 +17,12 @@ public:
     string getType();
     void setType(string s);
 
+    string getWikilink();
+    void setWikilink(string s);
+
+    string getImagePath();
+    void setImagePath(string s);
+
     bool getBuilt();
     void setBuilt(bool b);
 
@@ -29,6 +35,9 @@ private:
     string name;
     string buildYear;
     string type;
+    string wikilink;
+    string imagePath;
+
     bool built;
     int ID;
 

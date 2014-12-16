@@ -1,6 +1,7 @@
+#include <QFileDialog>
 #include "adddialog.h"
 #include "ui_adddialog.h"
-
+#include "mainwindow.h"
 AddDialog::AddDialog(QWidget *parent, QString AddType) :
     QDialog(parent),
     ui(new Ui::AddDialog)
@@ -37,6 +38,7 @@ void AddDialog::on_ok_button_clicked() {
         temp.setGender(ui->second_input->text().toStdString());
         temp.setDayOfBirth(ui->third_input->text().toStdString());
         temp.setDayOfDeath(ui->fourth_input->text().toStdString());
+        temp.setImagePath(ui->image_path->text().toStdString());
         if(temp.isValidPerson()) {
             pService.add(temp);
             AddDialog::close();
@@ -49,6 +51,8 @@ void AddDialog::on_ok_button_clicked() {
         temp.setBuildYear(ui->second_input->text().toStdString());
         temp.setType(ui->third_input->text().toStdString());
         temp.setBuilt(ui->fourth_input->text().toInt());
+        temp.setImagePath(ui->image_path->text().toStdString());
+
         if(temp.isValidComputer()) {
             cService.add(temp);
             AddDialog::close();
@@ -58,3 +62,13 @@ void AddDialog::on_ok_button_clicked() {
     }
 }
 
+
+void AddDialog::on_browse_Button_clicked()
+{
+    QFileDialog::getOpenFileName(
+                this,
+                "Browse for image",
+                "",
+                "Image files (*.png *.jpg *.jpeg)"
+                );
+}

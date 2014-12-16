@@ -21,6 +21,12 @@ public:
     string getDayOfDeath();
     void setDayOfDeath(string s);
 
+    string getWikilink();
+    void setWikilink(string s);
+
+    string getImagePath();
+    void setImagePath(string s);
+
     int getID();
     void setID(int id);
 
@@ -31,7 +37,11 @@ private:
     string gender;
     string dayOfBirth;
     string dayOfDeath;
+    string wikilink;
+    string imagePath;
+
     int ID;
+
 
 };
 

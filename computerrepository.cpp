@@ -23,11 +23,13 @@ bool ComputerRepository::add(Computer c) {
     db.open();
     QSqlQuery query;
     query.prepare("INSERT INTO Computers(Name, BuildYear, Type, Built)"
-                  "VALUES (:name, :buildyear, :type, :built)");
+                  "VALUES (:name, :buildyear, :type, :built, :wikilink, :imagepath)");
     query.bindValue(":name", QString::fromStdString(c.getName()));
     query.bindValue(":buildyear", QString::fromStdString(c.getBuildYear()));
     query.bindValue(":type", QString::fromStdString(c.getType()));
     query.bindValue(":built", QString::number(c.getBuilt()));
+    query.bindValue(":wikilink", QString::fromStdString(c.getWikilink()));
+    query.bindValue(":imagepath", QString::fromStdString(c.getWikilink()));
     if(query.exec()) {
         db.close();
         return true;
@@ -152,6 +154,8 @@ vector<Computer> ComputerRepository::getComputersFromScientist(Person scientist)
         c.setType(query.value("Type").toString().toStdString());
         c.setBuilt(query.value("Built").toInt());
         c.setID(query.value("ID").toInt());
+        c.setWikilink(query.value("Wikilink").toString().toStdString());
+        c.setImagePath(query.value("ImagePath").toString().toStdString());
 
         temp.push_back(c);
     }
