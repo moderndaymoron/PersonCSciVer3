@@ -9,8 +9,7 @@ namespace Ui {
 class FormConnectionDialog;
 }
 
-class FormConnectionDialog : public QDialog
-{
+class FormConnectionDialog : public QDialog {
     Q_OBJECT
 
 public:
