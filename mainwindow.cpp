@@ -291,11 +291,11 @@ void MainWindow::on_actionForm_Connection_triggered() {
 }
 
 void MainWindow::on_DisplayTable_2_doubleClicked(const QModelIndex &index){
-    specificViewDialog = new SpecificViewDialog(this);
+    specificViewDialog = new SpecificViewDialog(this, "Computer", currentPersons, currentComputers, ui->DisplayTable_2->currentRow());
     specificViewDialog->show();
 }
 
 void MainWindow::on_DisplayTable_doubleClicked(const QModelIndex &index) {
-    specificViewDialog = new SpecificViewDialog(this);
+    specificViewDialog = new SpecificViewDialog(this, "Person", currentPersons, currentComputers, ui->DisplayTable->currentRow());
     specificViewDialog->show();
 }

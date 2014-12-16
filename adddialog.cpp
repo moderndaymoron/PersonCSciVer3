@@ -38,7 +38,12 @@ void AddDialog::on_ok_button_clicked() {
         temp.setGender(ui->second_input->text().toStdString());
         temp.setDayOfBirth(ui->third_input->text().toStdString());
         temp.setDayOfDeath(ui->fourth_input->text().toStdString());
+
+        qDebug() << ui->wiki_link->text();
+        temp.setWikilink(ui->wiki_link->text().toStdString());
         temp.setImagePath(ui->image_path->text().toStdString());
+
+
         if(temp.isValidPerson()) {
             pService.add(temp);
             AddDialog::close();

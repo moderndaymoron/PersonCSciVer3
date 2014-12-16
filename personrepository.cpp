@@ -25,13 +25,14 @@ PersonRepository::~PersonRepository() {
 bool PersonRepository::add(Person p) {
     db.open();
     QSqlQuery query;
-    query.prepare("INSERT INTO Persons(Name, Gender, DateOfBirth, DateOfDeath)"
-                  "VALUES (:name, :gender, :dateofbirth, :dateofdeath, :wikilink, imagepath)");
+    query.prepare("INSERT INTO Persons(Name, Gender, DateOfBirth, DateOfDeath, Wikilink, ImagePath)"
+                  "VALUES (:name, :gender, :dateofbirth, :dateofdeath, :wikilink, :imagepath)");
     query.bindValue(":name", QString::fromStdString(p.getName()));
     query.bindValue(":gender", QString::fromStdString(p.getGender()));
     query.bindValue(":dateofbirth", QString::fromStdString(p.getDayOfBirth()));
     query.bindValue(":dateofdeath", QString::fromStdString(p.getDayOfDeath()));
     query.bindValue(":wikilink", QString::fromStdString(p.getWikilink()));
+    qDebug() << QString::fromStdString(p.getWikilink());
     query.bindValue(":imagepath", QString::fromStdString(p.getWikilink()));
     query.exec();
     db.close();
@@ -84,8 +85,10 @@ vector<Person> PersonRepository::getSortedPersons(string sortOrder) {
         p.setDayOfBirth(q.value("DateOfBirth").toString().toStdString());
         p.setDayOfDeath(q.value("DateOfDeath").toString().toStdString());
         p.setID(q.value("ID").toInt());
+        qDebug() << q.value("Wikilink").toString();
         p.setWikilink(q.value("Wikilink").toString().toStdString());
         p.setImagePath(q.value("ImagePath").toString().toStdString());
+
 
         temp.push_back(p);
     }
