@@ -28,11 +28,31 @@ bool ComputerRepository::add(Computer c) {
     query.bindValue(":buildyear", QString::fromStdString(c.getBuildYear()));
     query.bindValue(":type", QString::fromStdString(c.getType()));
     query.bindValue(":built", QString::number(c.getBuilt()));
-    query.exec();
-    db.close();
-    return true;
-
+    if(query.exec()) {
+        db.close();
+        return true;
+    } else {
+        db.close();
+        return false;
+    }
 }
+
+bool ComputerRepository::remove(Computer c) {
+    db.open();
+    QSqlQuery query;
+    qDebug() << "Calling remove on computer" << QString::fromStdString(c.getName());
+    query.prepare("DELETE FROM Computers WHERE ID = :id");
+    query.bindValue(":id", c.getID());
+
+    if(query.exec()) {
+        db.close();
+        return true;
+    } else {
+        db.close();
+        return false;
+    }
+}
+
 
 vector<Computer> ComputerRepository::getSortedComputers(string sortOrder) {
     db.open();

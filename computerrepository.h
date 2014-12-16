@@ -18,9 +18,11 @@ public:
     vector<Computer> getSortedComputers(string sortOrder);
 
     bool add(Computer c);
+    bool remove(Computer c);
 
     vector<Computer> getComputersFromScientist(Person scientist);
     bool connectComputerToScientist(int PersonID, int ComputerID);
+
 private:
     QSqlDatabase db;
 };

@@ -123,17 +123,8 @@ void MainWindow::on_button_add_clicked() {
 
 }
 
-/*void MainWindow::on_button_delete_clicked()
-{
-    if(ui-> display_tab->tabText() == "Person") {
 
-    } else if(ui->display_tab->tabText() == "Computer") {
 
-    } else {
-
-    }
-}
-*/
 
 void MainWindow::on_search_field_2_textChanged() {
        ui->display_tab->setCurrentIndex(1);
@@ -248,4 +239,26 @@ void MainWindow::displayConnections() {
         ui->DisplayTable_Connections->setItem(i, 0, new QTableWidgetItem(connectedScientistNames[i]));
         ui->DisplayTable_Connections->setItem(i, 1, new QTableWidgetItem(connectedComputersToScientist[i]));
     }
+}
+
+void MainWindow::on_DisplayTable_2_clicked(const QModelIndex &index) {
+    ui->button_delete->setEnabled(true);
+}
+
+void MainWindow::on_button_delete_clicked()
+{
+    /*if(ui-> display_tab->tabText() == "Person") {
+        int index = ui->DisplayTable->currentIndex();
+        cSer
+    } */
+    if(ui->display_tab->currentIndex() == 1) {
+        int index = ui->DisplayTable_2->currentRow();
+        if (cService.remove(currentComputers[index])) {
+            qDebug() << "Computer " << QString::fromStdString(currentComputers[index].getName()) << " removed";
+        } else {
+            qDebug() << "Not removed";
+        }
+    }/* else {
+
+    }*/
 }

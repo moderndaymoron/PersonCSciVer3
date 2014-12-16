@@ -11,6 +11,10 @@ bool ComputerService::add(Computer c) {
     return compRepo.add(c);
 }
 
+bool ComputerService::remove(Computer c) {
+    return compRepo.remove(c);
+}
+
 vector<Computer> ComputerService::getSortedComputers(string sortOrder) {
     return compRepo.getSortedComputers(sortOrder);
 }

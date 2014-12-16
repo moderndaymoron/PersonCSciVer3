@@ -38,6 +38,10 @@ private slots:
 
     void on_display_tab_tabBarClicked(int index);
 
+    void on_DisplayTable_2_clicked(const QModelIndex &index);
+
+    void on_button_delete_clicked();
+
 private:
     Ui::MainWindow *ui;
 

@@ -16,6 +16,7 @@ public:
     vector<Computer> getComputersFromScientist(Person scientist);
     bool connectComputerToScientist(int PersonID, int ComputerID);
 
+    bool remove(Computer c);
 private:
     ComputerRepository compRepo;
 };
