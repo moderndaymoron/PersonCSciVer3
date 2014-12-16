@@ -128,6 +128,7 @@ void MainWindow::on_button_delete_clicked() {
         int index = ui->DisplayTable->currentRow();
         if (pService.remove(currentPersons[index])) {
             qDebug() << "Person " << QString::fromStdString(currentPersons[index].getName()) << " removed";
+            on_display_tab_tabBarClicked(0);
         } else {
             qDebug() << "Not removed";
         }
@@ -135,6 +136,7 @@ void MainWindow::on_button_delete_clicked() {
         int index = ui->DisplayTable_2->currentRow();
         if (cService.remove(currentComputers[index])) {
             qDebug() << "Computer " << QString::fromStdString(currentComputers[index].getName()) << " removed";
+            on_display_tab_tabBarClicked(1);
         } else {
             qDebug() << "Not removed";
         }
