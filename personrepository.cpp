@@ -32,7 +32,6 @@ bool PersonRepository::add(Person p) {
     query.bindValue(":dateofbirth", QString::fromStdString(p.getDayOfBirth()));
     query.bindValue(":dateofdeath", QString::fromStdString(p.getDayOfDeath()));
     query.bindValue(":wikilink", QString::fromStdString(p.getWikilink()));
-    qDebug() << QString::fromStdString(p.getWikilink());
     query.bindValue(":imagepath", QString::fromStdString(p.getWikilink()));
     query.exec();
     db.close();
@@ -85,7 +84,6 @@ vector<Person> PersonRepository::getSortedPersons(string sortOrder) {
         p.setDayOfBirth(q.value("DateOfBirth").toString().toStdString());
         p.setDayOfDeath(q.value("DateOfDeath").toString().toStdString());
         p.setID(q.value("ID").toInt());
-        qDebug() << q.value("Wikilink").toString();
         p.setWikilink(q.value("Wikilink").toString().toStdString());
         p.setImagePath(q.value("ImagePath").toString().toStdString());
 
@@ -147,6 +145,8 @@ vector<Person> PersonRepository::search(string input, string word) {
         tempP.setDayOfBirth(query.value("DateOfBirth").toString().toStdString());
         tempP.setDayOfDeath(query.value("DateOfDeath").toString().toStdString());
         tempP.setID(query.value("ID").toInt());
+        tempP.setWikilink(query.value("Wikilink").toString().toStdString());
+        tempP.setImagePath(query.value("ImagePath").toString().toStdString());
 
         temp.push_back(tempP);
     }

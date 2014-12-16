@@ -32,5 +32,10 @@ void SpecificViewDialog::on_pushButton_clicked() {
         //QString link = "www.google.com";
         qDebug() << "Attempting to open this url: " << link;
         QDesktopServices::openUrl(QUrl(link));
+    } else if(displayType == "Computer") {
+        qDebug() << QString::fromStdString(displayedComputer.getName());
+        QString link = QString::fromStdString(displayedComputer.getWikilink());
+        qDebug() << "Attemption to open this url: " << link;
+        QDesktopServices::openUrl(QUrl(link));
     }
 }

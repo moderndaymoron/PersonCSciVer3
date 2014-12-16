@@ -58,6 +58,10 @@ void AddDialog::on_ok_button_clicked() {
         temp.setBuilt(ui->fourth_input->text().toInt());
         temp.setImagePath(ui->image_path->text().toStdString());
 
+        qDebug() << ui->wiki_link->text();
+        temp.setWikilink(ui->wiki_link->text().toStdString());
+        temp.setImagePath(ui->image_path->text().toStdString());
+
         if(temp.isValidComputer()) {
             cService.add(temp);
             AddDialog::close();
