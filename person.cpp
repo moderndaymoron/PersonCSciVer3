@@ -6,6 +6,8 @@ Person::Person() {
     gender = "";
     dayOfBirth = "";
     dayOfDeath = "";
+    wikilink = "";
+    imagePath = "";
 }
 
 string Person::getName() {

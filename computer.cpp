@@ -6,6 +6,8 @@ Computer::Computer() {
     buildYear = "";
     type = "";
     built = false;
+    wikilink = "";
+    imagePath = "";
 }
 
 string Computer::getName() {

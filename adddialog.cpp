@@ -69,6 +69,6 @@ void AddDialog::on_browse_Button_clicked()
                 this,
                 "Browse for image",
                 "",
-                "Image files (*.png, *.jpg, *.jpeg)"
+                "Image files (*.png *.jpg *.jpeg)"
                 );
 }
