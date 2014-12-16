@@ -9,9 +9,11 @@ public:
     PersonService();
 
     bool add(Person p);
+    bool remove(Person p);
 
     vector<Person> search(string input, string word);
     vector<Person> getSortedPersons(string order);
+
 
 private:
     PersonRepository pRepo;

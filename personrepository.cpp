@@ -37,6 +37,20 @@ bool PersonRepository::add(Person p) {
 
 }
 
+bool PersonRepository::remove(Person p) {
+    db.open();
+    QSqlQuery query;
+    query.prepare("DELETE FROM Persons WHERE ID = :id");
+    query.bindValue(":id", p.getID());
+    if(query.exec()) {
+        db.close();
+        return true;
+    } else {
+        db.close();
+        return false;
+    }
+}
+
 vector<Person> PersonRepository::getSortedPersons(string sortOrder) {
     db.open();
     QSqlQuery q;

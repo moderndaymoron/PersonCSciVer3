@@ -124,11 +124,14 @@ void MainWindow::on_button_add_clicked() {
 }
 
 void MainWindow::on_button_delete_clicked() {
-    /*if(ui-> display_tab->tabText() == "Person") {
-        int index = ui->DisplayTable->currentIndex();
-        cSer
-    } */
-    if(ui->display_tab->currentIndex() == 1) {
+    if(ui-> display_tab->currentIndex() == 0) {
+        int index = ui->DisplayTable->currentRow();
+        if (pService.remove(currentPersons[index])) {
+            qDebug() << "Person " << QString::fromStdString(currentPersons[index].getName()) << " removed";
+        } else {
+            qDebug() << "Not removed";
+        }
+    } else if(ui->display_tab->currentIndex() == 1) {
         int index = ui->DisplayTable_2->currentRow();
         if (cService.remove(currentComputers[index])) {
             qDebug() << "Computer " << QString::fromStdString(currentComputers[index].getName()) << " removed";
@@ -256,6 +259,10 @@ void MainWindow::displayConnections() {
 }
 
 void MainWindow::on_DisplayTable_2_clicked(const QModelIndex &index) {
+    ui->button_delete->setEnabled(true);
+}
+
+void MainWindow::on_DisplayTable_clicked(const QModelIndex &index) {
     ui->button_delete->setEnabled(true);
 }
 

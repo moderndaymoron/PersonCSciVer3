@@ -48,6 +48,7 @@ private slots:
     void on_actionForm_Connection_triggered();
 
     void on_actionAbout_triggered();
+    void on_DisplayTable_clicked(const QModelIndex &index);
 private:
     Ui::MainWindow *ui;
 
