@@ -5,45 +5,43 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow) {
     ui->setupUi(this);
-   // ui->display_tab->setCurrentIndex(0);
+    ui->display_tab->setCurrentIndex(0);
+    setDisplay();
+    displayConnections();
     on_comboBox_sort_by_person_activated();
-    displayPersons();
-    displayComputers();
-
-    //ui->type_dropdown->addItem("Person");
-    //ui->type_dropdown->addItem("Computer");
-    //ui->type_dropdown->addItem("Connection");
 }
 
 MainWindow::~MainWindow() {
     delete ui;
 }
 
-void MainWindow::display()
-{
+void MainWindow::setDisplay() {
     ui->button_add->setEnabled(true);
     ui->search_by_dropdown->clear();
     ui->search_by_dropdown_2->clear();
 
-        ui->search_by_dropdown->addItem("Name");
-        ui->search_by_dropdown->addItem("Gender");
-        ui->search_by_dropdown->addItem("Date Of Birth");
-        ui->search_by_dropdown->addItem("Date Of Death");
+    ui->search_by_dropdown->addItem("Name");
+    ui->search_by_dropdown->addItem("Gender");
+    ui->search_by_dropdown->addItem("Date Of Birth");
+    ui->search_by_dropdown->addItem("Date Of Death");
 
-        ui->DisplayTable->setHorizontalHeaderItem(0, new QTableWidgetItem("Name"));
-        ui->DisplayTable->setHorizontalHeaderItem(1, new QTableWidgetItem("Gender"));
-        ui->DisplayTable->setHorizontalHeaderItem(2, new QTableWidgetItem("Date Of Birth"));
-        ui->DisplayTable->setHorizontalHeaderItem(3, new QTableWidgetItem("Date Of Death"));
+    ui->DisplayTable->setHorizontalHeaderItem(0, new QTableWidgetItem("Name"));
+    ui->DisplayTable->setHorizontalHeaderItem(1, new QTableWidgetItem("Gender"));
+    ui->DisplayTable->setHorizontalHeaderItem(2, new QTableWidgetItem("Date Of Birth"));
+    ui->DisplayTable->setHorizontalHeaderItem(3, new QTableWidgetItem("Date Of Death"));
 
-        ui->search_by_dropdown_2->addItem("Name");
-        ui->search_by_dropdown_2->addItem("Build Year");
-        ui->search_by_dropdown_2->addItem("Type");
-        ui->search_by_dropdown_2->addItem("Built (boolean)");
+    ui->search_by_dropdown_2->addItem("Name");
+    ui->search_by_dropdown_2->addItem("Build Year");
+    ui->search_by_dropdown_2->addItem("Type");
+    ui->search_by_dropdown_2->addItem("Built (boolean)");
 
-        ui->DisplayTable_2->setHorizontalHeaderItem(0, new QTableWidgetItem("Name"));
-        ui->DisplayTable_2->setHorizontalHeaderItem(1, new QTableWidgetItem("Build Year"));
-        ui->DisplayTable_2->setHorizontalHeaderItem(2, new QTableWidgetItem("Type"));
-        ui->DisplayTable_2->setHorizontalHeaderItem(3, new QTableWidgetItem("Built?"));
+    ui->DisplayTable_2->setHorizontalHeaderItem(0, new QTableWidgetItem("Name"));
+    ui->DisplayTable_2->setHorizontalHeaderItem(1, new QTableWidgetItem("Build Year"));
+    ui->DisplayTable_2->setHorizontalHeaderItem(2, new QTableWidgetItem("Type"));
+    ui->DisplayTable_2->setHorizontalHeaderItem(3, new QTableWidgetItem("Built?"));
+
+    ui->DisplayTable_Connections->setHorizontalHeaderItem(0, new QTableWidgetItem("Scientist"));
+    ui->DisplayTable_Connections->setHorizontalHeaderItem(1, new QTableWidgetItem("Computers"));
 
     displayAll(false);
 }
@@ -54,12 +52,10 @@ void MainWindow::displayAll(bool searching) {
     if(ui->display_tab->currentIndex() == 0) {
         ui->DisplayTable->clearContents();
         if(!currentPersons.size() && !searching) {
-            //currentPersons = pService.getSortedPersons("Name");
-            on_comboBox_sort_by_person_activated();
+            currentPersons = pService.getSortedPersons("Name");
             qDebug() << "!CP.size && !searching";
         }
         qDebug() << "getting persons size" << currentPersons.size();
-        //on_comboBox_sort_by_person_activated();
         displayPersons();
 
     } else if(ui->display_tab->currentIndex() == 1) {
@@ -69,13 +65,7 @@ void MainWindow::displayAll(bool searching) {
             qDebug() << "!CC.size && !searching";
         }
         qDebug() << "getting computer size" <<currentComputers.size();
-        //on_comboBox_sort_by_computer_activated();
         displayComputers();
-
-        /*ui->DisplayTable_2->setHorizontalHeaderItem(0, new QTableWidgetItem("Name"));
-        ui->DisplayTable_2->setHorizontalHeaderItem(1, new QTableWidgetItem("Build Year"));
-        ui->DisplayTable_2->setHorizontalHeaderItem(2, new QTableWidgetItem("Type"));
-        ui->DisplayTable_2->setHorizontalHeaderItem(3, new QTableWidgetItem("Built?"));*/
     } else {
         //TODO: get and display connections
     }
@@ -106,7 +96,7 @@ void MainWindow::on_search_field_textChanged() {
     string searchType = ui->search_by_dropdown->currentText().toStdString();
 
     bool searching = true;
-    qDebug() << ui->display_tab->currentIndex();
+
     if(ui->display_tab->currentIndex() == 0) {
         currentPersons = pService.search(searchInput, searchType);
         displayAll(searching);
@@ -119,7 +109,7 @@ void MainWindow::on_search_field_textChanged() {
 void MainWindow::on_button_add_clicked() {
 
     if(ui->display_tab->currentIndex() == 0) {
-    addDialog = new AddDialog(this, ui->display_tab->tabText(0));
+        addDialog = new AddDialog(this, ui->display_tab->tabText(0));
     }else if(ui->display_tab->currentIndex() == 1) {
         addDialog = new AddDialog(this, ui->display_tab->tabText(1));
     }
@@ -129,8 +119,11 @@ void MainWindow::on_button_add_clicked() {
 /*void MainWindow::on_button_delete_clicked()
 {
     if(ui-> display_tab->tabText() == "Person") {
+
     } else if(ui->display_tab->tabText() == "Computer") {
+
     } else {
+
     }
 }
 */
@@ -172,18 +165,18 @@ void MainWindow::on_comboBox_sort_by_computer_activated()
     if(ui->comboBox_sort_by_computer->currentText() == "Name") {
         currentComputers = cService.getSortedComputers("Name");
         displayComputers();
-
     } else if(ui->comboBox_sort_by_computer->currentText() == "Build Year") {
         currentComputers = cService.getSortedComputers("Build Year");
         displayComputers();
     } else if(ui->comboBox_sort_by_computer->currentText() == "Type"){
         currentComputers = cService.getSortedComputers("Type");
         displayComputers();
-    } else if(ui->comboBox_sort_by_computer->currentText() == "Build Year") {
+    } else if(ui->comboBox_sort_by_computer->currentText() == "Built?") {
         currentComputers = cService.getSortedComputers("Built");
         displayComputers();
     }
 }
+
 void MainWindow::displayComputers() {
 
     ui->DisplayTable_2->setRowCount(currentComputers.size());
@@ -201,4 +194,51 @@ void MainWindow::displayComputers() {
         ui->DisplayTable_2->setItem(i, 3, new QTableWidgetItem(computerBuilt));
     }
 
+}
+
+void MainWindow::on_display_tab_tabBarClicked(int index)
+{
+    if(index == 0) {
+        on_comboBox_sort_by_person_activated();
+    } else if(index == 1) {
+        on_comboBox_sort_by_computer_activated();
+    } else if(index == 2) {
+        displayConnections();
+    }
+}
+
+void MainWindow::displayConnections() {
+    ui->DisplayTable_Connections->clearContents();
+    vector<Person> sortedScientists = pService.getSortedPersons("Name");
+    vector<QString> connectedScientistNames;
+    vector<QString> connectedComputersToScientist;
+    int rowCounter = 0;
+    for(int i = 0; i < sortedScientists.size(); i++) {
+        vector<Computer> connectedComputers = cService.getComputersFromScientist(sortedScientists[i]);
+        qDebug() << "";
+        string comp;
+        if(connectedComputers.size()) {
+            for(int j = 0; j < connectedComputers.size(); j++) {
+                if(j != connectedComputers.size() - 1) {
+                    comp += connectedComputers[j].getName() + ", ";
+                } else {
+                    comp += connectedComputers[j].getName() + ".";
+                }
+            }
+            rowCounter++;
+            connectedScientistNames.push_back(QString::fromStdString(sortedScientists[i].getName()));
+            connectedComputersToScientist.push_back(QString::fromStdString(comp));
+
+            qDebug() << QString::fromStdString(comp);
+
+        } else {
+            qDebug() << "No connection in database.";
+        }
+
+    }
+    ui->DisplayTable_Connections->setRowCount(rowCounter);
+    for(int i = 0; i < rowCounter; i++) {
+        ui->DisplayTable_Connections->setItem(i, 0, new QTableWidgetItem(connectedScientistNames[i]));
+        ui->DisplayTable_Connections->setItem(i, 1, new QTableWidgetItem(connectedComputersToScientist[i]));
+    }
 }

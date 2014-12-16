@@ -11,12 +11,10 @@ public:
     bool add(Person p);
 
     vector<Person> search(string input, string word);
-
     vector<Person> getSortedPersons(string order);
 
 private:
     PersonRepository pRepo;
-
 };
 
 #endif // PERSONSERVICE_H_INCLUDED

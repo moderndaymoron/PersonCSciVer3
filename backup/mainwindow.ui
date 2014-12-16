@@ -6,36 +6,26 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>466</width>
-    <height>421</height>
+    <width>493</width>
+    <height>526</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>GCSFD Version 3 - Now featuring GUI &amp; SQLite!</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="logos.qrc">
+    <normaloff>:/logo/database.jpeg</normaloff>:/logo/database.jpeg</iconset>
+  </property>
+  <property name="iconSize">
+   <size>
+    <width>40</width>
+    <height>40</height>
+   </size>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
-     <widget class="QComboBox" name="type_dropdown"/>
-    </item>
-    <item row="0" column="2" colspan="2">
-     <widget class="QLineEdit" name="search_field">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
-      <property name="placeholderText">
-       <string>search input here...</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="1">
-     <widget class="QComboBox" name="search_by_dropdown">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="1">
+    <item row="1" column="1">
      <widget class="QPushButton" name="button_delete">
       <property name="enabled">
        <bool>false</bool>
@@ -45,7 +35,7 @@
       </property>
      </widget>
     </item>
-    <item row="2" column="0">
+    <item row="1" column="0">
      <widget class="QPushButton" name="button_add">
       <property name="enabled">
        <bool>false</bool>
@@ -55,37 +45,356 @@
       </property>
      </widget>
     </item>
-    <item row="1" column="0" colspan="4">
-     <widget class="QTableWidget" name="DisplayTable">
-      <property name="editTriggers">
-       <set>QAbstractItemView::NoEditTriggers</set>
+    <item row="0" column="0" colspan="2">
+     <widget class="QTabWidget" name="display_tab">
+      <property name="toolTip">
+       <string/>
       </property>
-      <property name="selectionBehavior">
-       <enum>QAbstractItemView::SelectRows</enum>
+      <property name="tabPosition">
+       <enum>QTabWidget::North</enum>
       </property>
-      <property name="showGrid">
+      <property name="currentIndex">
+       <number>1</number>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="tabsClosable">
        <bool>false</bool>
       </property>
-      <column>
-       <property name="text">
-        <string>New Column</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Name</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Gender</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Date Of Death</string>
-       </property>
-      </column>
+      <widget class="QWidget" name="person_tab">
+       <attribute name="icon">
+        <iconset resource="logos.qrc">
+         <normaloff>:/logo/scientist.jpeg</normaloff>:/logo/scientist.jpeg</iconset>
+       </attribute>
+       <attribute name="title">
+        <string>Persons</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="0" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_4">
+            <item>
+             <widget class="QLabel" name="label_sort_by_person">
+              <property name="text">
+               <string>Sort by:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="comboBox_sort_by_person">
+              <item>
+               <property name="text">
+                <string>Name</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Gender</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Date of Birth</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Date of Death</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_7">
+            <item>
+             <widget class="QLabel" name="label_search_for_person">
+              <property name="text">
+               <string>Search for:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="search_by_dropdown">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
+              <item>
+               <property name="text">
+                <string>Name</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Gender</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Date of Birth</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Date of Death</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_3">
+            <item>
+             <spacer name="verticalSpacer">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Fixed</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>13</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="search_field">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
+              <property name="placeholderText">
+               <string>search input here...</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+        <item row="1" column="0">
+         <widget class="QTableWidget" name="DisplayTable">
+          <property name="editTriggers">
+           <set>QAbstractItemView::NoEditTriggers</set>
+          </property>
+          <property name="selectionBehavior">
+           <enum>QAbstractItemView::SelectRows</enum>
+          </property>
+          <property name="showGrid">
+           <bool>false</bool>
+          </property>
+          <attribute name="verticalHeaderVisible">
+           <bool>false</bool>
+          </attribute>
+          <column>
+           <property name="text">
+            <string>Name</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Gender</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Date Of Birth</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Date Of Death</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="computer_tab">
+       <attribute name="icon">
+        <iconset resource="logos.qrc">
+         <normaloff>:/logo/computer.jpeg</normaloff>:/logo/computer.jpeg</iconset>
+       </attribute>
+       <attribute name="title">
+        <string>Computers</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="0" column="0">
+         <layout class="QVBoxLayout" name="verticalLayout_5">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_2">
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout">
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_2">
+                <item>
+                 <widget class="QLabel" name="label_sort_by_computer">
+                  <property name="text">
+                   <string>Sort by:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QComboBox" name="comboBox_sort_by_computer">
+                  <item>
+                   <property name="text">
+                    <string>Name</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Build Year</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Type</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Built?</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout">
+                <item>
+                 <widget class="QLabel" name="label_search_for_computer">
+                  <property name="text">
+                   <string>Search for:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QComboBox" name="search_by_dropdown_2">
+                  <property name="enabled">
+                   <bool>true</bool>
+                  </property>
+                  <item>
+                   <property name="text">
+                    <string>Name</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Build Year</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Type</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Built?</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="search_field_2">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
+              <property name="placeholderText">
+               <string>search input here...</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QTableWidget" name="DisplayTable_2">
+            <property name="editTriggers">
+             <set>QAbstractItemView::NoEditTriggers</set>
+            </property>
+            <property name="selectionBehavior">
+             <enum>QAbstractItemView::SelectRows</enum>
+            </property>
+            <property name="showGrid">
+             <bool>false</bool>
+            </property>
+            <attribute name="verticalHeaderVisible">
+             <bool>false</bool>
+            </attribute>
+            <column>
+             <property name="text">
+              <string>Name</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Year built</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Type</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>built?</string>
+             </property>
+            </column>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="connection_tab">
+       <attribute name="icon">
+        <iconset resource="logos.qrc">
+         <normaloff>:/logo/connections.jpeg</normaloff>:/logo/connections.jpeg</iconset>
+       </attribute>
+       <attribute name="title">
+        <string>Connections</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_4">
+        <item row="0" column="0">
+         <widget class="QTableWidget" name="DisplayTable_Connections">
+          <property name="selectionBehavior">
+           <enum>QAbstractItemView::SelectRows</enum>
+          </property>
+          <property name="showGrid">
+           <bool>false</bool>
+          </property>
+          <attribute name="verticalHeaderVisible">
+           <bool>false</bool>
+          </attribute>
+          <column>
+           <property name="text">
+            <string>Scientists</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Computers</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+       </layout>
+      </widget>
      </widget>
     </item>
    </layout>
@@ -95,7 +404,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>466</width>
+     <width>493</width>
      <height>21</height>
     </rect>
    </property>
@@ -111,6 +420,8 @@
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="logos.qrc"/>
+ </resources>
  <connections/>
 </ui>

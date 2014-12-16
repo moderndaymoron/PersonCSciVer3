@@ -2,10 +2,10 @@
 #define COMPUTERREPOSITORY_H
 
 #include <vector>
-
+#include <QtSql>
 #include "computer.h"
 #include "person.h"
-#include <QtSql>
+
 using namespace std;
 
 class ComputerRepository {
