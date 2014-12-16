@@ -15,8 +15,7 @@ MainWindow::~MainWindow() {
     delete ui;
 }
 
-void MainWindow::setDisplay()
-{
+void MainWindow::setDisplay() {
     ui->button_add->setEnabled(true);
     ui->search_by_dropdown->clear();
     ui->search_by_dropdown_2->clear();

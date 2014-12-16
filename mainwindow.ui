@@ -372,6 +372,15 @@
        <layout class="QGridLayout" name="gridLayout_4">
         <item row="0" column="0">
          <widget class="QTableWidget" name="DisplayTable_Connections">
+          <property name="selectionBehavior">
+           <enum>QAbstractItemView::SelectRows</enum>
+          </property>
+          <property name="showGrid">
+           <bool>false</bool>
+          </property>
+          <attribute name="verticalHeaderVisible">
+           <bool>false</bool>
+          </attribute>
           <column>
            <property name="text">
             <string>Scientists</string>
