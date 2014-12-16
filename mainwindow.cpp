@@ -5,9 +5,20 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow) {
     ui->setupUi(this);
+<<<<<<< HEAD
     ui->display_tab->setCurrentIndex(0);
     display();
     on_comboBox_sort_by_person_activated();
+=======
+   // ui->display_tab->setCurrentIndex(0);
+    on_comboBox_sort_by_person_activated();
+    displayPersons();
+    displayComputers();
+
+    //ui->type_dropdown->addItem("Person");
+    //ui->type_dropdown->addItem("Computer");
+    //ui->type_dropdown->addItem("Connection");
+>>>>>>> 80cb54641e5c109108bb3eddd8c88ea30eb35f8a
 }
 
 MainWindow::~MainWindow() {
@@ -44,26 +55,28 @@ void MainWindow::display()
 }
 
 void MainWindow::displayAll(bool searching) {
-    ui->DisplayTable->clearContents();
-    ui->DisplayTable_2->clearContents();
+
     qDebug() << "Calling display all";
     if(ui->display_tab->currentIndex() == 0) {
+        ui->DisplayTable->clearContents();
         if(!currentPersons.size() && !searching) {
             currentPersons = pService.getSortedPersons("Name");
             //on_comboBox_sort_by_person_activated();
             qDebug() << "!CP.size && !searching";
         }
         qDebug() << "getting persons size" << currentPersons.size();
-        on_comboBox_sort_by_person_activated();
-
+        //on_comboBox_sort_by_person_activated();
+        displayPersons();
 
     } else if(ui->display_tab->currentIndex() == 1) {
+        ui->DisplayTable_2->clearContents();
         if(!currentComputers.size() && !searching) {
             currentComputers = cService.getSortedComputers("Name");
             qDebug() << "!CC.size && !searching";
         }
         qDebug() << "getting computer size" <<currentComputers.size();
-        on_comboBox_sort_by_computer_activated();
+        //on_comboBox_sort_by_computer_activated();
+        displayComputers();
 
         /*ui->DisplayTable_2->setHorizontalHeaderItem(0, new QTableWidgetItem("Name"));
         ui->DisplayTable_2->setHorizontalHeaderItem(1, new QTableWidgetItem("Build Year"));

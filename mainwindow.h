@@ -24,19 +24,19 @@ public:
 
     void on_display_tab_tabBarClicked();
 private slots:
-    void on_type_dropdown_activated();
+    //void on_type_dropdown_activated();
 
     void on_search_field_textChanged();
 
     void on_button_add_clicked();
 
-    void on_button_delete_clicked();
+    //void on_button_delete_clicked();
 
     void on_search_field_2_textChanged();
 
     void on_comboBox_sort_by_person_activated();
 
-    void on_comboBox_sort_by_person_activated(const QString &arg1);
+    //void on_comboBox_sort_by_person_activated(const QString &arg1);
 
     void on_comboBox_sort_by_computer_activated();
 
