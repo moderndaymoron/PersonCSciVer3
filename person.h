@@ -25,7 +25,7 @@ public:
     void setWikilink(string s);
 
     string getImagePath();
-    void setImage(string s);
+    void setImagePath(string s);
 
     int getID();
     void setID(int id);

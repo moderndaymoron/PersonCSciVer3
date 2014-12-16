@@ -52,7 +52,7 @@ string Person::getImagePath() {
     return imagePath;
 }
 
-void Person::setImage(string s) {
+void Person::setImagePath(string s) {
     imagePath = s;
 }
 

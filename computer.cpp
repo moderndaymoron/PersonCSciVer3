@@ -32,6 +32,22 @@ void Computer::setType(string s) {
     type = s;
 }
 
+string Computer::getWikilink() {
+    return wikilink;
+}
+
+void Computer::setWikilink(string s) {
+    wikilink = s;
+}
+
+string Computer::getImagePath() {
+    return imagePath;
+}
+
+void Computer::setImagePath(string s) {
+    imagePath = s;
+}
+
 bool Computer::getBuilt() {
     return built;
 }
