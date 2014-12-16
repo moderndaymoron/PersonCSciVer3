@@ -13,6 +13,16 @@
   <property name="windowTitle">
    <string>GCSFD Version 3 - Now featuring GUI &amp; SQLite!</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="logos.qrc">
+    <normaloff>:/logo/database.jpeg</normaloff>:/logo/database.jpeg</iconset>
+  </property>
+  <property name="iconSize">
+   <size>
+    <width>40</width>
+    <height>40</height>
+   </size>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="1" column="1">
@@ -38,7 +48,7 @@
     <item row="0" column="0" colspan="2">
      <widget class="QTabWidget" name="display_tab">
       <property name="toolTip">
-       <string>Persons</string>
+       <string/>
       </property>
       <property name="tabPosition">
        <enum>QTabWidget::North</enum>
@@ -46,7 +56,20 @@
       <property name="currentIndex">
        <number>0</number>
       </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="tabsClosable">
+       <bool>false</bool>
+      </property>
       <widget class="QWidget" name="person_tab">
+       <attribute name="icon">
+        <iconset resource="logos.qrc">
+         <normaloff>:/logo/scientist.jpeg</normaloff>:/logo/scientist.jpeg</iconset>
+       </attribute>
        <attribute name="title">
         <string>Persons</string>
        </attribute>
@@ -197,6 +220,10 @@
        </layout>
       </widget>
       <widget class="QWidget" name="computer_tab">
+       <attribute name="icon">
+        <iconset resource="logos.qrc">
+         <normaloff>:/logo/computer.jpeg</normaloff>:/logo/computer.jpeg</iconset>
+       </attribute>
        <attribute name="title">
         <string>Computers</string>
        </attribute>
@@ -359,6 +386,8 @@
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="logos.qrc"/>
+ </resources>
  <connections/>
 </ui>
