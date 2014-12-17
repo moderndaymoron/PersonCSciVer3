@@ -14,14 +14,17 @@ public:
     ComputerRepository();
     ~ComputerRepository();
 
-    vector<Computer> search(string input, string word);
-    vector<Computer> getSortedComputers(string sortOrder);
-
     bool add(Computer c);
     bool remove(Computer c);
-
-    vector<Computer> getComputersFromScientist(Person scientist);
+    //links scientist and computer
     bool connectComputerToScientist(int PersonID, int ComputerID);
+
+    //finds the computers that input scientist is paired with
+    vector<Computer> getComputersFromScientist(Person scientist);
+    //searches for an item in the database
+    vector<Computer> search(string input, string word);
+    //returns vector of sorted items
+    vector<Computer> getSortedComputers(string sortOrder);
 
 private:
     QSqlDatabase db;

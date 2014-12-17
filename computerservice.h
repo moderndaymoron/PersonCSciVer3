@@ -9,14 +9,15 @@ class ComputerService {
 
 public:
     ComputerService();
+
     bool add(Computer c);
+    bool connectComputerToScientist(int PersonID, int ComputerID);
+    bool remove(Computer c);
+
     vector<Computer> getSortedComputers(string sortOrder);
     vector<Computer> search(string input, string word);
-
     vector<Computer> getComputersFromScientist(Person scientist);
-    bool connectComputerToScientist(int PersonID, int ComputerID);
 
-    bool remove(Computer c);
 private:
     ComputerRepository compRepo;
 };

@@ -17,10 +17,7 @@ public:
     ~FormConnectionDialog();
 
 private slots:
-
-
     void on_cancel_button_clicked();
-
     void on_form_connection_button_clicked();
 
 private:
