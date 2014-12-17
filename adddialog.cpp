@@ -56,7 +56,6 @@ void AddDialog::on_ok_button_clicked() {
         temp.setBuildYear(ui->second_input->text().toStdString());
         temp.setType(ui->third_input->text().toStdString());
         temp.setBuilt(ui->fourth_input->text().toInt());
-        temp.setImagePath(ui->image_path->text().toStdString());
 
         qDebug() << ui->wiki_link->text();
         temp.setWikilink(ui->wiki_link->text().toStdString());
@@ -74,10 +73,7 @@ void AddDialog::on_ok_button_clicked() {
 
 void AddDialog::on_browse_Button_clicked()
 {
-    QFileDialog::getOpenFileName(
-                this,
-                "Browse for image",
-                "",
-                "Image files (*.png *.jpg *.jpeg)"
-                );
+    QString filePath = QFileDialog::getOpenFileName(this, "Browse for image", "", "Image files (*.png *.jpg *.jpeg)");
+    qDebug() << filePath;
+    ui->image_path->setText(filePath);
 }

@@ -8,10 +8,17 @@ SpecificViewDialog::SpecificViewDialog(QWidget *parent, QString type, vector<Per
     if(type == "Person") {
         displayedPerson = currentPersons[index];
         displayType = "Person";
+        qDebug() << "Image path: " << QString::fromStdString(displayedPerson.getImagePath());
+        QPixmap pixmap(QString::fromStdString(displayedPerson.getImagePath()));
+
+        ui->label_image->setPixmap(pixmap);
+        ui->label_image->setScaledContents(true);
 
     } else if(type == "Computer") {
         displayedComputer = currentComputers[index];
         displayType = "Computer";
+
+
     }
 }
 

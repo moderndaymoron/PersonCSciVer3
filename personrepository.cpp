@@ -32,7 +32,7 @@ bool PersonRepository::add(Person p) {
     query.bindValue(":dateofbirth", QString::fromStdString(p.getDayOfBirth()));
     query.bindValue(":dateofdeath", QString::fromStdString(p.getDayOfDeath()));
     query.bindValue(":wikilink", QString::fromStdString(p.getWikilink()));
-    query.bindValue(":imagepath", QString::fromStdString(p.getWikilink()));
+    query.bindValue(":imagepath", QString::fromStdString(p.getImagePath()));
     query.exec();
     db.close();
     return true;
