@@ -21,9 +21,7 @@ public:
     ~AddDialog();
 
 private slots:
-
     void on_ok_button_clicked();
-
     void on_browse_Button_clicked();
 
 private:

@@ -15,12 +15,15 @@ public:
     bool add(Person p);
     bool remove(Person p);
 
+     //searches for a person in the database
     vector<Person> search(string input, string word);
+    //returns list of sorted persons
     vector<Person> getSortedPersons(string sortOrder);
 
     QSqlDatabase getDatabaseConnection();
 private:
     QSqlDatabase db;
+    //to prevent repeated code
     void displayPerson(const int index);
     char searchFor();
 

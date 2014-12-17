@@ -28,7 +28,7 @@ public:
 
     int getID();
     void setID(int id);
-
+    //checks if added computer is on valid format
     bool isValidComputer();
 
 private:
