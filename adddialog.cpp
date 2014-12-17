@@ -20,14 +20,11 @@ AddDialog::AddDialog(QWidget *parent, QString AddType) :
         ui->third_input_label->setText("Date of Birth (YYYY/MM/DD):");
         ui->fourth_input_label->setText("Date of Death (YYYY/MM/DD):");
 
-    } else if (AddType == "Connections") {
-        //TODO: display add screen for connection
     }
 }
 
 
-AddDialog::~AddDialog()
-{
+AddDialog::~AddDialog(){
     delete ui;
 }
 
